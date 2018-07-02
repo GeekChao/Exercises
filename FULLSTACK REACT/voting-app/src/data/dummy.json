@@ -1,0 +1,45 @@
+{
+    "title": "Popular Products",
+    "pList": [
+        {
+            "id": 1,
+            "img": "http://localhost:3000/images/products/image-aqua.png",
+            "votes": 32,
+            "article": {
+                "title": "Yellow Pail",
+                "excerpt": "On-demand sand castle construction expertise."
+            },
+            "author": "http://localhost:3000/images/avatars/daniel.jpg"
+        },
+        {
+            "id": 2,
+            "img": "http://localhost:3000/images/products/image-rose.png",
+            "votes": 28,
+            "article": {
+                "title": "Tinfoild: Tailored tinfoil hats",
+                "excerpt": "We already have your measurements and shipping address."
+            },
+            "author": "http://localhost:3000/images/avatars/elliot.jpg"
+        },
+        {
+            "id": 3,
+            "img": "http://localhost:3000/images/products/image-steel.png",
+            "votes": 34,
+            "article": {
+                "title": "Haught or Naught",
+                "excerpt": "High-minded or absent-minded? You decide."
+            },
+            "author": "http://localhost:3000/images/avatars/helen.jpg"
+        },
+        {
+            "id": 4,
+            "img": "http://localhost:3000/images/products/image-yellow.png",
+            "votes": 25,
+            "article": {
+                "title": "Supermajority: The Fantasy Congress League",
+                "excerpt": "Earn points when your favorite politicians pass legislation."
+            },
+            "author": "http://localhost:3000/images/avatars/helen.jpg"
+        }
+    ]
+}

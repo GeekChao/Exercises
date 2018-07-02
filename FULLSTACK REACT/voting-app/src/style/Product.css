@@ -1,0 +1,75 @@
+.product {
+    margin: 2rem;
+    font-size: 16px;
+}
+
+.product > .product_icon {
+    float: left;
+    width: 30%;
+    clear: both;
+    text-align: center;
+}
+
+.product > .product_info {
+    display: inline-block;
+    width: 70%;
+}
+
+.product_icon > img {
+    width: 80%;
+    height: auto;
+}
+
+.product_info > .product_info_vote{
+    height: 10%;
+}
+
+.product_info > .product_info_article{
+    height: 75%;
+}
+
+.product_info > .product_info_author{
+    height: 10%;
+}
+
+.product_info_author img {
+    width: 5%;
+    height: 10%;
+}
+
+.product_info_article a {
+    color:lightblue;
+    text-decoration: none;
+}
+
+.product_info_article h5 {
+    margin-bottom: 0;
+}
+
+.product_info_article p {
+    margin-top: .2rem;
+}
+
+.product_info_author {
+    color: gainsboro;
+}
+
+.product_info_author img {
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+.product_info {
+    margin-top: .5rem;
+}
+
+.product_info_vote img {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.product div, article > * {
+    text-align: left;
+}
+
