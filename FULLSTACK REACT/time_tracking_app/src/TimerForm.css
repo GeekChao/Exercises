@@ -1,0 +1,51 @@
+.timertf, .timer{
+    max-width: 45%;
+    margin: 1em auto .5em;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);
+    text-align: left;
+    padding: .3em .6em;
+}
+
+.timertf_field{
+    margin-bottom: .5rem;
+}
+
+.timertf_field > label, .timer > .timer_project{
+    font-size: .7rem;
+    font-weight: bold;
+}
+
+.timertf_field > input{
+    width: 95%; 
+    height: 1.5rem;
+    font-size: 1rem;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;  
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, .1);
+    padding-left: .5rem;
+    outline: none;
+}
+
+.timertf_btn > *{
+    width: 50%;
+    line-height: 1.5rem;
+    background: hsla(0, 0%, 100%, .1);
+    font-size: .8rem;
+    outline: none;
+}
+
+.timertf_btn > .submit{
+    border: 1px solid rgb(81, 143, 236);
+    border-right-color: transparent;
+    border-bottom-left-radius: 5px;
+    color: rgb(81, 143, 236);
+}
+
+.timertf_btn > .cancel{
+    border: 1px solid rgb(228, 76, 76);
+    border-bottom-right-radius: 5px;
+    color: rgb(228, 76, 76);
+}
+
+

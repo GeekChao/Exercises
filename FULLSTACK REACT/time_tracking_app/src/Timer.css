@@ -1,0 +1,43 @@
+.timer * {
+    margin: .2rem;
+    font-weight: bold;
+}
+
+.timer .timer_project{
+    color: lightgray;
+    font-size: .7rem;
+}
+
+.timer .timer_time{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.timer .timer_action{
+    text-align: right;
+}
+
+.timer_action > * {
+    width: 20px;
+    height: 20px;
+    border: none;
+}
+
+.timer_action_del{
+    background: url('http://localhost:3000/images/delete.png') no-repeat;
+}
+
+.timer_action_edit{
+    background: url('http://localhost:3000/images/edit.png') no-repeat;
+}
+
+.timer_action_toggle{
+    width: 100%;
+    line-height: 1.5rem;
+    background: hsla(0, 0%, 100%, .1);
+    font-size: .8rem;
+    outline: none;
+    border: 1px solid lightgreen;
+    border-radius: 5px;
+    color: lightgreen;
+}
