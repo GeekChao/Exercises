@@ -3,31 +3,22 @@ import './TimerForm.css';
 
 class TimerForm extends Component{
     state = {
-        title: '',
-        project: ''
+        title: this.props.title || '',
+        project: this.props.project || ''
     };
 
-    componentDidMount() {
-        if(this.props.type === 'Edit'){
-            this.setState({
-                title: this.props.timer.title,
-                project: this.props.timer.project
-            });
-        }
-    }
-
     handleCancelBtnClick = () => {
-        this.props.type === 'Edit' ? this.props.handleEditClick() : this.props.handleAddClick();
+        this.props.id ? this.props.handleEditClick() : this.props.handleAddClick();
     }
 
-    handleInput = (evt) => {
+    handleChange = (evt) => {
         this.setState({
             [`${evt.target.name}`]: evt.target.value
         });
     };
 
     handleSubmitBtnClick = (timer) => {
-        this.props.type === 'Edit' ? this.props.handleUpdateTF({...this.props.timer, ...timer}) : this.props.handleCreateTF(timer);
+        this.props.id ? this.props.handleUpdateTF(this.props.id, timer) : this.props.handleCreateTF(timer);
         this.handleCancelBtnClick();
     }
 
@@ -36,17 +27,17 @@ class TimerForm extends Component{
     }
 
     render() {
-        let submit = this.props.type === 'Edit' ? 'Update' : 'Create';
+        let submit = this.props.id ? 'Update' : 'Create';
         return (
             <div className='timertf'>
                 <form onSubmit={this.handleSubmit}>
                     <div className='timertf_field'>
                         <label htmlFor='title'>Title</label><br />
-                        <input id='title' name='title' value={this.state.title} type='text' onInput={this.handleInput}></input>
+                        <input id='title' name='title' value={this.state.title} type='text' onChange={this.handleChange}></input>
                     </div>
                     <div className='timertf_field'>
                         <label htmlFor='project'>Project</label><br />
-                        <input id='project' name='project' value={this.state.project} type='text' onInput={this.handleInput}></input>
+                        <input id='project' name='project' value={this.state.project} type='text' onChange={this.handleChange}></input>
                     </div>
                     <div className='timertf_btn'>
                         <button className='submit' onClick={() => this.handleSubmitBtnClick(this.state)}>{submit}</button>

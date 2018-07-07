@@ -5,17 +5,10 @@ class Timer extends Component{
     id = 0;
     isDelBtnClicked = false;
     state = {
-        time: '0:0:0',
+        time: this.props.time,
         isTimerTicked: false,
-        lastTime: '0:0:0'
+        lastTime: this.props.time,
     };
-
-    componentDidMount(){
-        this.setState({
-            time: this.props.timer.time,
-            lastTime: this.props.timer.time
-        });
-    }
 
     clearTimeInterval(){
         if(this.id) {
@@ -30,12 +23,19 @@ class Timer extends Component{
     }
 
     handleUpdateTime() {
-        this.props.handleUpdateTF({...this.props.timer, time: this.state.time});
+        this.props.handleUpdateTF(this.props.id, {time: this.state.time});
     }
 
     handleDeleteBtnClick = (id) => {
         this.props.handleDeleteTF(id);
         this.isDelBtnClicked = true;
+    }
+
+    pad(numStr, size){ //human readable
+        if(typeof numStr !== 'string') numStr += '';
+        let padded = numStr;
+        while(padded.length < size) padded = `0${padded}`;
+        return padded;
     }
 
     calculateTimeDiff(startTime){
@@ -52,7 +52,7 @@ class Timer extends Component{
             time.push(sum % 60);
             carry = Math.floor(sum / 60);
         }
-        let [h, m, s] = time.reverse();
+        let [h, m, s] = time.reverse().map(ele => this.pad(ele, 2));
 
         return `${h}:${m}:${s}`;
     }
@@ -76,7 +76,7 @@ class Timer extends Component{
     }
 
     render() {
-        let {id, title, project} = this.props.timer;
+        let {id, title, project} = this.props;
         return (
             <div className='timer'>
                 <section>

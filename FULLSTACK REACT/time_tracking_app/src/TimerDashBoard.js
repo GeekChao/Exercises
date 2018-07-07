@@ -5,7 +5,7 @@ import EditableTimerList from './EditableTimerList';
 import ToggleableTimerForm from './ToggleableTimerForm';
 
 class TimerDashBoard extends Component {
-  static id = 0;
+  static id = 1; //number 0 is a falsy vallue in JS
 
   state = {
     timers: []
@@ -14,14 +14,14 @@ class TimerDashBoard extends Component {
 
   handleCreateTF = (timer) => {
     timer.id = TimerDashBoard.id++;
-    timer.time = "0:0:0";
+    timer.time = "00:00:00";
     let newArr = [...this.state.timers, timer]
     this.setState({timers: newArr});
   };
 
-  handleUpdateTF = (timer) => {
-    let index = this.state.timers.findIndex(t => t.id === timer.id);
-    let newArr = [...this.state.timers.slice(0, index), timer, ...this.state.timers.slice(index + 1)];
+  handleUpdateTF = (id, attrs) => {
+    let index = this.state.timers.findIndex(t => t.id === id);
+    let newArr = [...this.state.timers.slice(0, index), {...this.state.timers[index], ...attrs}, ...this.state.timers.slice(index + 1)];
     this.setState({timers: newArr});
   };
 

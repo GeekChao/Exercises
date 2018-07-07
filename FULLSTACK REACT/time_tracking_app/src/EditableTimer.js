@@ -15,8 +15,22 @@ class EditableTimer extends Component{
         return (
             <div>
                  {this.state.isEditBtnClicked ? 
-                    <EditTimerForm timer={this.props.timer} handleEditClick={this.handleEditClick} handleUpdateTF={this.props.handleUpdateTF}/> : 
-                    <Timer timer={this.props.timer} handleEditClick={this.handleEditClick} handleDeleteTF={this.props.handleDeleteTF} handleUpdateTF={this.props.handleUpdateTF}/>}
+                    <EditTimerForm
+                        id={this.props.timer.id} 
+                        title={this.props.timer.title} 
+                        project={this.props.timer.project}
+                        handleEditClick={this.handleEditClick} 
+                        handleUpdateTF={this.props.handleUpdateTF}
+                    /> : 
+                    <Timer
+                        title={this.props.timer.title} 
+                        project={this.props.timer.project} 
+                        time={this.props.timer.time}
+                        id={this.props.timer.id} 
+                        handleEditClick={this.handleEditClick} 
+                        handleDeleteTF={this.props.handleDeleteTF} handleUpdateTF={this.props.handleUpdateTF}
+                    />
+                 }
             </div>
         );
     }
