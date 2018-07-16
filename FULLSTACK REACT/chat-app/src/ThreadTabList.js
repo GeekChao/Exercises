@@ -8,7 +8,7 @@ const mapStateToTabList = (state) => ({
 }); 
 
 const mapDispatchToTabList = (dispatch) => ({
-    handleClick: (activeThreadId) => dispatch(actionCreator('OPEN_THREAD', activeThreadId))
+    handleClick: (activeThreadId) => dispatch(actionCreator.openThread('OPEN_THREAD', activeThreadId))
 });
 
 const ThreadTabList = connect(

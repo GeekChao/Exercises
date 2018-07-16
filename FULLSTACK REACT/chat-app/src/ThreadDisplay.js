@@ -3,7 +3,7 @@ import Thread from './Thread';
 import actionCreator from './actionCreator';
 import uuid from 'uuid';
 
-const mapStateToThreadPrps = (state) => ({
+const mapStateToThreadProps = (state) => ({
     messages: state.threads.find(thread => thread.id === state.activeThreadId).messages,
     activeThreadId: state.activeThreadId
 });
@@ -15,12 +15,12 @@ const mapDispatchToThreadProps = (dispatch) => ({
 const mergeThreadProps = (stateProps, dispatchProps) => ({
     ...stateProps,
     ...dispatchProps,
-    handleSubmit: (text) => dispatchProps.dispatch(actionCreator('ADD_MSG', stateProps.activeThreadId,  uuid.v4().slice(0, 5), text)),
-    handleDelte: (id) => dispatchProps.dispatch(actionCreator('DEL_MSG', stateProps.activeThreadId, id))
+    handleSubmit: (text) => dispatchProps.dispatch(actionCreator.addMsg('ADD_MSG', stateProps.activeThreadId,  uuid.v4().slice(0, 6), text)),
+    handleDelte: (id) => dispatchProps.dispatch(actionCreator.deleteMsg('DEL_MSG', stateProps.activeThreadId, id))
 });
 
 const ThreadDisplay = connect(
-    mapStateToThreadPrps,
+    mapStateToThreadProps,
     mapDispatchToThreadProps,
     mergeThreadProps
 )(Thread);
