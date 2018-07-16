@@ -1,0 +1,16 @@
+{
+    "title": "World Cup Forum",
+    "tabs": [
+        {
+            "id": 1,
+            "name": "France",
+            "messages": []
+        },
+        {
+            "id": 2,
+            "name": "Croatia",
+            "messages": []
+        }
+    ],
+    "activeThreadId": 1
+}
