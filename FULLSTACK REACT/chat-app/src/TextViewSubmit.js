@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './TextViewSubmit.css';
 
 class TextViewSubmit extends React.Component{
     static propTypes = {
@@ -21,9 +22,9 @@ class TextViewSubmit extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className='TextViewSubmit'>
                 <input type='text' name='message' value={this.state.message} onChange={this.hanldeChange} />
-                <input type='submit' onClick={this.handleSubmit} />
+                <button type='submit' disabled={!(this.state.message.length > 0)} onClick={this.handleSubmit}>Submit</button> 
             </div>
         );
     }

@@ -1,0 +1,30 @@
+.TextViewSubmit > input[name='message']{
+    border-style: none;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, .2);
+    padding: .4rem;
+    box-shadow: 0px 0px 0px .3px rgba(0, 0, 0, .2);
+    border-radius: .5rem;
+}
+
+.TextViewSubmit > input[name='message']:focus{
+    border: 1px solid lightskyblue;
+}
+
+.TextViewSubmit > button{
+    outline: none;
+    margin-left: .5rem;
+    padding: .3rem .8rem;
+    border: 1px solid rgba(0, 0, 0, .1);
+    background: rgb(42, 143, 211) linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+    border-radius: .5rem;
+    box-shadow: 0 .05rem .25rem rgba(0, 0, 0, .5);
+    color: white;
+    text-shadow: 0 -.05rem .05rem rgba(0, 0, 0, .5);
+    font-size: 100%;
+    line-height: 1.5;
+}
+
+.TextViewSubmit > button:active{
+	box-shadow: 0 .15em white inset;
+}

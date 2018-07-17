@@ -1,0 +1,9 @@
+.App{
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.App > h1{
+    padding: .5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}

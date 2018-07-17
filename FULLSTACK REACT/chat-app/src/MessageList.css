@@ -1,0 +1,11 @@
+.MessageList{
+    list-style: none;
+}
+
+.MessageList > li{
+    margin: .6rem;
+}
+
+.MessageList > li .UserId{
+    color: rgb(180, 180, 180);
+}

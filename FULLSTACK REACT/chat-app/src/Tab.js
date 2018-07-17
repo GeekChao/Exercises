@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Tab.css';
 
 const Tab = (props) => {
     let {active, handleClick, name} = props;
-    let style = {};
-    active ? style.color = 'red' : style.color = 'black';
+    let selected = active ? 'Selected': '';
     return (
-        <button style={style} onClick={handleClick}>{name}</button>
+        <a className={`Tab ${selected}`} href='#' onClick={handleClick}>{name}</a>
     );
 };
 

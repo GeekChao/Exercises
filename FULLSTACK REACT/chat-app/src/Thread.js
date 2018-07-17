@@ -5,7 +5,7 @@ import MessageList from './MessageList';
 
 const Thread = (props) => {
     return (
-        <div>
+        <div style={{fontSize: '14px'}}>
             <MessageList  messages={props.messages} handleDelte={props.handleDelte}/>
             <TextViewSubmit handleSubmit={props.handleSubmit}/>
         </div>

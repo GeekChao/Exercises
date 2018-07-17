@@ -1,10 +1,11 @@
 import React from 'react';
 import Tab from './Tab';
 import PropTypes from 'prop-types';
+import './TabList.css'
 
 const TabList = (props) => {
     return (
-        <div>
+        <nav className='TabList'>
             {props.tabs.map(
                 (tab, i) => <Tab 
                                 key={i} 
@@ -13,7 +14,7 @@ const TabList = (props) => {
                                 handleClick={() => props.handleClick(tab.id)}
                             />
             )}
-        </div>
+        </nav>
     );
 };
 
