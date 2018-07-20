@@ -1,4 +1,9 @@
-nav.TabList {
+nav.TabList ul {
     padding-left: .5rem;
     text-align: left;
+    list-style: none;
+}
+
+nav.TabList li{
+    display: inline-block;
 }

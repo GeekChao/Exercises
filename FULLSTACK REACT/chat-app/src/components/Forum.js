@@ -1,15 +1,26 @@
 import React from 'react';
 import ThreadDisplay from './ThreadDisplay';
 import ThreadTabList from './ThreadTabList';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './Forum.css'
 
-const Forum = () => {
-    return (
-        <div className='Forum'>
-            <ThreadTabList />
-            <ThreadDisplay />
-        </div>
-    );
+class Forum extends React.Component{
+
+    static propTypes = {
+        activeTab: PropTypes.string
+    }
+
+    render(){
+        const { activeTab } = this.props.match.params;
+        const { location } = this.props;
+        return (
+            <div className='Forum'>
+                <ThreadTabList location={location}/>
+                {activeTab && <ThreadDisplay activeTab={activeTab}/>}
+            </div>
+        );
+    }
 };
 
-export default Forum;
+export default withRouter(Forum);

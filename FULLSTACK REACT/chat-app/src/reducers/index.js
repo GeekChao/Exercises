@@ -1,17 +1,9 @@
 import { combineReducers } from 'redux';
-import { ADD_MSG, DELETE_MSG, OPEN_THREAD } from '../actions/actionCreator';
+import { ADD_MSG, DELETE_MSG } from '../actions/actionCreator';
 
 const reducers = combineReducers({
-    activeTab: activeTabReducer,
     threads: threadsReducer
 });
-
-function activeTabReducer(state = 'France', action){
-    if(action.type === OPEN_THREAD){
-        return action.activeTab;
-    }
-    return state;
-};
 
 function messagesReducer(state = [], action){
     switch(action.type){

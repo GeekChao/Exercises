@@ -14,9 +14,3 @@ export const deleteMsg = (activeTab, uid) => ({
     activeTab,
     uid
 });
-
-export const OPEN_THREAD = 'OPEN_THREAD';
-export const openThread = (activeTab) => ({
-    type: OPEN_THREAD,
-    activeTab
-});

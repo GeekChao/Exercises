@@ -6,20 +6,19 @@ import './TabList.css'
 const TabList = (props) => {
     return (
         <nav className='TabList'>
-            {props.tabs.map(
-                (tab, i) => <Tab 
-                                key={i} 
-                                name={tab.name} 
-                                active={tab.name === props.activeTab} 
-                            />
-            )}
+            <ul>
+                {props.tabs.map(
+                    (tab, i) => <li key={i}>
+                                    <Tab name={tab.name}/>
+                                </li>
+                )}
+            </ul>
         </nav>
     );
 };
 
 TabList.propTypes = {
     tabs: PropTypes.arrayOf(PropTypes.object),
-    activeTab: PropTypes.string.isRequired
 };
 
 export default TabList;

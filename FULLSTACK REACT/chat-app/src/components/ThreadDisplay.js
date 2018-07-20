@@ -2,9 +2,9 @@ import {connect} from 'react-redux';
 import Thread from './Thread';
 import * as action from '../actions/actionCreator';
 
-const mapStateToThreadProps = (state) => ({
-    messages: state.threads.find(thread => thread.name === state.activeTab).messages,
-    activeTab: state.activeTab
+const mapStateToThreadProps = (state, { activeTab }) => ({
+    messages: state.threads.find(thread => thread.name === activeTab).messages,
+    activeTab
 });
 
 const mapDispatchToThreadProps = (dispatch) => ({
