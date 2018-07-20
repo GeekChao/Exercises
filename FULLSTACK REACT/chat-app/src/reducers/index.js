@@ -1,8 +1,4 @@
-import React from 'react';
-import Forum from './Forum';
-import {createStore, combineReducers} from 'redux';
-import {Provider} from 'react-redux';
-import './App.css';
+import { combineReducers } from 'redux';
 
 const reducers = combineReducers({
     activeThreadId: activeThreadIdReducer,
@@ -54,17 +50,4 @@ function threadsReducer(state = [
     }
 };
 
-const store = createStore(reducers);
-
-const App = () => {
-    return(
-        <div className='App'>
-            <h1>World Cup Final Forum</h1>
-            <Provider store={store}>
-                <Forum />
-            </Provider>
-        </div>
-    );
-};
-
-export default App;
+export default reducers;

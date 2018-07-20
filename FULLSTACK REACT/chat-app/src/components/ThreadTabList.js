@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import TabList from './TabList';
-import actionCreator from './actionCreator';
+import * as action from '../actions/actionCreator';
 
 const mapStateToTabList = (state) => ({
     tabs: state.threads,
@@ -8,7 +8,7 @@ const mapStateToTabList = (state) => ({
 }); 
 
 const mapDispatchToTabList = (dispatch) => ({
-    handleClick: (activeThreadId) => dispatch(actionCreator.openThread('OPEN_THREAD', activeThreadId))
+    handleClick: (activeThreadId) => dispatch(action.openThread(activeThreadId))
 });
 
 const ThreadTabList = connect(
