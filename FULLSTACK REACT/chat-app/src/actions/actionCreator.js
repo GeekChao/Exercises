@@ -1,22 +1,22 @@
 import { v4 } from 'uuid';
 
 export const ADD_MSG = 'ADD_MSG';
-export const addMsg = (activeThreadId, text) => ({
+export const addMsg = (activeTab, text) => ({
     type: ADD_MSG,
-    activeThreadId,
+    activeTab,
     uid: v4().slice(0, 6),
     text
 });
 
 export const DELETE_MSG = 'DEL_MSG';
-export const deleteMsg = (activeThreadId, uid) => ({
+export const deleteMsg = (activeTab, uid) => ({
     type: DELETE_MSG,
-    activeThreadId,
+    activeTab,
     uid
 });
 
 export const OPEN_THREAD = 'OPEN_THREAD';
-export const openThread = (activeThreadId) => ({
+export const openThread = (activeTab) => ({
     type: OPEN_THREAD,
-    activeThreadId
+    activeTab
 });

@@ -10,8 +10,7 @@ const TabList = (props) => {
                 (tab, i) => <Tab 
                                 key={i} 
                                 name={tab.name} 
-                                active={tab.id === props.activeThreadId} 
-                                handleClick={() => props.handleClick(tab.id)}
+                                active={tab.name === props.activeTab} 
                             />
             )}
         </nav>
@@ -20,8 +19,7 @@ const TabList = (props) => {
 
 TabList.propTypes = {
     tabs: PropTypes.arrayOf(PropTypes.object),
-    handleClick: PropTypes.func.isRequired,
-    activeThreadId: PropTypes.number.isRequired
+    activeTab: PropTypes.string.isRequired
 };
 
 export default TabList;
