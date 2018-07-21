@@ -7,20 +7,23 @@ const byNameReducer = combineReducers({
     Croatia: croatiaTabReducer
 });
 
+function updateTab(state, action){
+    if(state.name !== action.activeTab) return state;
+    switch(action.type){
+        case ADD_MSG:
+        case DELETE_MSG:
+            return {...state, messages: messagesReducer(state.messages, action)};
+        default: 
+            return state;
+    } 
+}
+
 function franceTabRecuder(state = {
     id: 1,
     name: 'France',
     messages: messagesReducer(undefined, {})
 }, action) {
-    if(state.name !== action.activeTab) return state;
-    switch(action.type){
-        case ADD_MSG:
-        case DELETE_MSG:
-            const newMessages = messagesReducer(state.messages, action);
-            return {...state, messages: newMessages};
-        default: 
-            return state;
-    }
+    return updateTab(state, action);
 };
 
 function croatiaTabReducer(state = {
@@ -28,19 +31,11 @@ function croatiaTabReducer(state = {
     name: 'Croatia',
     messages: messagesReducer(undefined, {})
 }, action){
-    if(state.name !== action.activeTab) return state;
-    switch(action.type){
-        case ADD_MSG:
-        case DELETE_MSG:
-            const newMessages = messagesReducer(state.messages, action);
-            return {...state, messages: newMessages};
-        default: 
-            return state;
-    }
+    return updateTab(state, action);
 };
 
 export default byNameReducer;
 
-export const getMessages = (state) => {
+export const getMsgFromTab = (state) => {
     return state.messages;
 };

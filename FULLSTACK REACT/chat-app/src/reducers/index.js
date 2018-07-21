@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import byNameReducer, { getMessages } from './byName'
+import byNameReducer, * as frombyName from './byName'
 
 const reducers = combineReducers({
     byName: byNameReducer,
@@ -18,5 +18,5 @@ export const getAllTabNames = (state) => {
 
 export const getMsgFromTab = (state, tabName) => {
     const tab = state.byName[tabName];
-    return getMessages(tab);
+    return frombyName.getMsgFromTab(tab);
 }
