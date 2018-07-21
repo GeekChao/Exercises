@@ -7,9 +7,9 @@ const TabList = (props) => {
     return (
         <nav className='TabList'>
             <ul>
-                {props.tabs.map(
-                    (tab, i) => <li key={i}>
-                                    <Tab name={tab.name}/>
+                {props.tabNames.map(
+                    (tabName, i) => <li key={i}>
+                                    <Tab name={tabName}/>
                                 </li>
                 )}
             </ul>
@@ -18,7 +18,7 @@ const TabList = (props) => {
 };
 
 TabList.propTypes = {
-    tabs: PropTypes.arrayOf(PropTypes.object),
+    tabNames: PropTypes.array.isRequired,
 };
 
 export default TabList;

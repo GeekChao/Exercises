@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 import Thread from './Thread';
 import * as action from '../actions/actionCreator';
+import { getMsgFromTab } from '../reducers'
 
 const mapStateToThreadProps = (state, { activeTab }) => ({
-    messages: state.threads.find(thread => thread.name === activeTab).messages,
+    messages: getMsgFromTab(state, activeTab),
     activeTab
 });
 

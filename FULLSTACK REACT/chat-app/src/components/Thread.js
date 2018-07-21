@@ -15,7 +15,9 @@ const Thread = (props) => {
 Thread.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     handleDelte: PropTypes.func.isRequired,
-    messages: PropTypes.arrayOf(PropTypes.object)
+    messages: PropTypes.shape({
+        uid: PropTypes.object
+    })
 };
 
 export default Thread;
