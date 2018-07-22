@@ -14,3 +14,15 @@ export const deleteMsg = (activeTab, uid) => ({
     activeTab,
     uid
 });
+
+export const FETCH_TAB_NAMES = 'FETCH_TAB_NAMES';
+export const fetchTabNames = (tabNames) => ({
+    type: FETCH_TAB_NAMES,
+    tabNames
+});
+
+export const FETCH_TAB = 'FETCH_TAB';
+export const fetchTab = (tab) => ({
+    type: FETCH_TAB,
+    tab
+});

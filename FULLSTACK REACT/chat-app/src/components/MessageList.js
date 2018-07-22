@@ -5,7 +5,7 @@ import './MessageList.css';
 const MessageList = (props) => {
     return (
         <ul className='MessageList'>
-            {Object.keys(props.messages).map((uid, i) => {
+            {props.messages && Object.keys(props.messages).map((uid, i) => {
                     const msg = props.messages[uid];
                     return (                    
                         <li 
