@@ -3,13 +3,16 @@ import Thread from './Thread';
 import * as action from '../actions/actionCreator';
 import { getMsgFromTab } from '../reducers';
 
-const mapStateToThreadProps = (state, { activeTab }) => ({
+const mapStateToThreadProps = (state, { activeTab, fetchTabStatus, loadTabStatus }) => ({
     messages: getMsgFromTab(state, activeTab),
-    activeTab
+    activeTab,
+    fetchTabStatus,
+    loadTabStatus
 });
 
-const mapDispatchToThreadProps = (dispatch) => ({
-    dispatch
+const mapDispatchToThreadProps = (dispatch, { handleFailFetchByName }) => ({
+    dispatch,
+    handleFailFetchByName
 });
 
 const mergeThreadProps = (stateProps, dispatchProps) => ({

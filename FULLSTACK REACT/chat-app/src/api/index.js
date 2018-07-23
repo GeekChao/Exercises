@@ -14,19 +14,24 @@ const fakeDataBase = {
     names: ['France', 'Croatia']
 };
 
-const delay = (data, time) => new Promise(
-        resolve => setTimeout(() => resolve(data), time),
-        reject => reject('Fail fetch')
-);
+const delay = (data, time) => {
+    return new Promise((resolve, reject) => {
+        if(Math.random() < 0.8){
+            setTimeout(() => resolve(data), time);
+        }else{
+            reject('Fail fetch');
+        }
+    });
+};
 
 export const fetchTabNames = () => {
     const names = fakeDataBase.names;
     return delay(names, 500);
 }
 
-export const fetchByName = (tabName) => {
+export const fetchTabByName = (tabName) => {
     const tab = fakeDataBase.byName[tabName];
-    return delay(tab, 500);
+    return delay(tab, 1500);
 };
 
 export const addMsgFromTab = (tabName, message) => {

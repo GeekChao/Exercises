@@ -1,4 +1,4 @@
-import { ADD_MSG, DELETE_MSG, FETCH_TAB } from '../actions/actionCreator';
+import { ADD_MSG, DELETE_MSG } from '../actions/actionCreator';
 import * as api from '../api';
 
 function messagesReducer(state = {}, action){
@@ -12,8 +12,6 @@ function messagesReducer(state = {}, action){
             delete newState[action.uid];
             api.deleteMsgFromTab(action.activeTab, action.uid);
             return newState;
-        case FETCH_TAB:
-            return action.tab.messages;
         default:
             return state;
     }
