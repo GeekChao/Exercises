@@ -3,19 +3,28 @@ import * as api from '../api';
 import { getAllTabNames } from '../reducers';
 
 export const ADD_MSG = 'ADD_MSG';
-export const addMsg = (activeTab, text) => ({
-    type: ADD_MSG,
-    activeTab,
-    uid: v4().slice(0, 6),
-    text
-});
+export const addMsg = (activeTab, text) => (dispatch) =>  {//optimistic update
+    const uid = v4().slice(0, 6);
+    dispatch({
+        type: ADD_MSG,
+        activeTab,
+        uid,
+        text
+    });
+
+    api.addMsgFromTab(activeTab, {uid, text}).then(() => console.log('Add Success'));
+}
 
 export const DELETE_MSG = 'DEL_MSG';
-export const deleteMsg = (activeTab, uid) => ({
-    type: DELETE_MSG,
-    activeTab,
-    uid
-});
+export const deleteMsg = (activeTab, uid) => (dispatch) => {
+    dispatch({
+        type: DELETE_MSG,
+        activeTab,
+        uid
+    });
+
+    api.deleteMsgFromTab(activeTab, uid).then(() => console.log('Delete Success'));
+}
 
 export const FETCH_TAB_NAMES = 'FETCH_TAB_NAMES';
 export const FETCH_TAB_NAMES_FAIL = 'FETCH_TAB_NAMES_FAIL';

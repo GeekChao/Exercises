@@ -15,10 +15,9 @@ class Forum extends React.Component{
     }
 
     componentDidMount(){
-        const { state, dispatch } = this.props;
-        const { activeTab } = this.props.match.params;
+        const { messages, dispatch, activeTab } = this.props;
         
-        if(activeTab && getMsgFromTab(state, activeTab) === undefined){
+        if(activeTab && messages === undefined){
             dispatch(action.fetchTabByName(activeTab));
         }else{
             dispatch(action.fetchTabNames());
@@ -26,9 +25,8 @@ class Forum extends React.Component{
     }
 
     componentDidUpdate(preProps){
-        const { dispatch } = this.props;
-        const { activeTab } = this.props.match.params;
-        if(activeTab !== preProps.match.params.activeTab){
+        const { dispatch, activeTab } = this.props;
+        if(activeTab !== preProps.activeTab){
             dispatch(action.fetchTabByName(activeTab));
         }
     }
@@ -42,15 +40,11 @@ class Forum extends React.Component{
     };
 
     render(){
-        const { activeTab } = this.props.match.params;
-        const { location, state} = this.props;
+        const { location, tabNames, fetchTabStatus, loadTabStatus, activeTab} = this.props;
 
-        if(getAllTabNames(state) === null) return <button onClick={this.handleFetchTabNames}>Fail, retry?</button>;
+        if(tabNames === null) return <button onClick={this.handleFetchTabNames}>Fail, retry?</button>;
         
-        if(getAllTabNames(state).length === 0) return <h1>loading....</h1>;
-
-        const fetchTabStatus = getFetchTabStatus(state);
-        const loadTabStatus = getMsgFromTab(state, activeTab);
+        if(tabNames.length === 0) return <h1>loading....</h1>;
 
         return (
             <div className='Forum'>
@@ -66,8 +60,15 @@ class Forum extends React.Component{
     }
 };
 
-const mapStateToForumProps = (state) => ({
-    state
-});
+const mapStateToForumProps = (state, ownProps) => {
+    const { activeTab } = ownProps.match.params;
+    return {
+        tabNames: getAllTabNames(state),
+        fetchTabStatus: getFetchTabStatus(state),
+        loadTabStatus: getMsgFromTab(state, activeTab),
+        messages: getMsgFromTab(state, activeTab),
+        activeTab
+    }
+};
 
 export default withRouter(connect(mapStateToForumProps)(Forum));

@@ -37,9 +37,11 @@ export const fetchTabByName = (tabName) => {
 export const addMsgFromTab = (tabName, message) => {
     const tab = fakeDataBase.byName[tabName];
     tab.messages[message.uid] = message;
+    return Promise.resolve();
 };
 
 export const deleteMsgFromTab = (tabName, uid) => {
     const tab = fakeDataBase.byName[tabName];
     delete tab.messages[uid];
+    return Promise.resolve();
 };
