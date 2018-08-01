@@ -30,6 +30,12 @@ a{
 .col{
     float: left;
     box-sizing: border-box;
+    padding: 0 .6875em 1.375em;
+}
+
+.flexbox .row{
+    display: flex;
+    flex: 1;
 }
 
 .row{
@@ -51,6 +57,11 @@ a{
     width: 25%;
 }
 
+.flexwrap .row-wrapping{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .row-wrapping{
     font-size: 0;
     margin: 0 -11px;
@@ -60,7 +71,6 @@ a{
 .row-wrapping > * {
     float: none;
     display: inline-block;
-    vertical-align: top;
     font-size: 16px;
     font-size: 1rem;
 }
@@ -84,4 +94,38 @@ a{
 .story > img{
     width: 100%;
     height: auto;
+}
+
+.col-ads{
+    height: 300px;
+}
+
+.ad::before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.col-ads > * {
+    height: 15%;
+    background: rgba(0, 0, 0, .1);
+    margin: .6875em 0;
+    text-align: center;
+}
+
+.ad-feature{
+    height: 50%;
+}
+
+.flexbox .col-ads{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.flexbox .ad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
