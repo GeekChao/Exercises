@@ -1,0 +1,51 @@
+.body, ul{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    width: 95%;
+    margin: 0 auto;
+    max-width: 76em;
+}
+
+nav ul{
+    list-style: none;
+    font-size: 0;
+}
+
+nav ul > li{
+    display: inline-block;
+    font-size: 16px;
+    font-size: 1rem;
+    text-align: center;
+    width: 20%;
+}
+
+.flexbox nav ul {
+    display: flex;
+}
+
+.flexbox nav ul > li{
+    flex: 1;
+}
+
+ul.row-wrapping{
+    list-style: none;
+}
+
+a {
+    font-size: 32px;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.ad{
+    text-align: center;
+    padding: .5em;
+}
+
+.story > img{
+    width: 100%;
+    height: auto;
+}
