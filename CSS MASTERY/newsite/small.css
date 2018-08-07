@@ -11,7 +11,8 @@
 .col{
     float: left;
     box-sizing: border-box;
-    padding: .675em;
+    padding: 0 .6875em 1.375em;
+    width: 100%;
 }
 
 .flexwrap .row{
@@ -40,12 +41,6 @@
 }
 
 .subcategory-feature{
-    width: 100%;
-}
-
-.col-ads, .subcategory-header{
-    float: none;
-    display: block;
     width: 100%;
 }
 
