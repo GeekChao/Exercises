@@ -1,0 +1,37 @@
+.row-quartet > *{
+    width: 25%;
+}
+
+.row-trio > *{
+    width: 33.3%;
+}
+
+.subcategory-feature{
+    width: 50%;
+}
+
+.col-ads{
+    float: left;
+    height: 18em;
+}
+
+.flexbox .col-ads{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.flexbox .ad{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad{
+    height: 20%;
+}
+
+.ad-feature{
+    height: 40%;
+}

@@ -1,3 +1,7 @@
+@import url('small.css') only screen and (min-width: 35em);
+@import url('medium.css') only screen and (min-width: 50em);
+@import url('large.css') only screen and (min-width: 75em);
+
 .body, ul{
     margin: 0;
     padding: 0;
@@ -6,7 +10,7 @@
 .wrapper{
     width: 95%;
     margin: 0 auto;
-    max-width: 76em;
+    max-width: 80em;
 }
 
 nav ul{
@@ -35,8 +39,6 @@ ul.row-wrapping{
 }
 
 a {
-    font-size: 32px;
-    font-size: 2rem;
     text-decoration: none;
 }
 
