@@ -1,7 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
 module.exports = {
     connect(){
-        this.db = new sqlite3.Database('../../db/food.db', sqlite3.OPEN_READWRITE, (err) => {
+        this.db = new sqlite3.Database(path.resolve(__dirname, '../../db/food.db'), sqlite3.OPEN_READWRITE, (err) => {
             if(err){
                 throw err;
             }
