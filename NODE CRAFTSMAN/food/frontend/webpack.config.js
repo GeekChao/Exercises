@@ -12,6 +12,11 @@ module.exports = {
     path: path.resolve(__dirname, '../backend/public'),
     filename: 'bundle.js'
   },
+  devServer: {
+    proxy: {
+      '/api': 'http://localhost:8000'
+    }
+  },
   module: {
     rules: [
       {
