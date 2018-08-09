@@ -3,12 +3,12 @@ DROP TABLE IF EXISTS Keywords;
 
 CREATE TABLE Category(
     id INTEGER PRIMARY KEY,
-    category TEXT NOT NULL
+    category TEXT NOT NULL UNIQUE
 );
 
 CREATE TABLE Keywords(
     id INTEGER PRIMARY KEY,
-    keyword TEXT NOT NULL,
+    keyword TEXT NOT NULL UNIQUE,
     category_id INTEGER NOT NULL,
     FOREIGN KEY(category_id) REFERENCES Category(id)
 );

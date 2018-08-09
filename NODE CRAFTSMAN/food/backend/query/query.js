@@ -13,6 +13,19 @@ function getCategories(){
     });
 }
 
+function getKeywords(){
+    return new Promise((resolve, reject) => {
+        db.connect().all('SELECT * FROM Keywords', [], (err, rows) => {
+            if(err){
+                reject(err);
+            }
+            resolve(rows);
+        }); 
+    
+        db.close();
+    });
+}
+
 function getKeywordsAndCategories(){
     return new Promise((resolve, reject) => {
         db.connect().all('SELECT keyword, category, Keywords.id FROM Keywords JOIN Category ON Keywords.category_id = Category.id', (err, rows) => {
@@ -71,6 +84,7 @@ function deleteKeyWord(keyword_id){
 
 module.exports = {
     getCategories,
+    getKeywords,
     getKeywordsAndCategories,
     createKeyword,
     deleteKeyWord,

@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const query = require('../query/query');
+const path = require('path');
 
 router.get('/', (req, res) => {
-    res.send('<p>Hello World</p>');
+    res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
 router.get('/keywords', (req, res) => {
-    query.getKeywordsAndCategories()
+    query.getKeywords()
         .then(JSON.stringify)
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err));
