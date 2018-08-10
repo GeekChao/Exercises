@@ -7,7 +7,7 @@ class KWGenerate extends React.Component{
             id: PropTypes.number,
             category: PropTypes.string
         })),
-        handleSubmit: PropTypes.func
+        handleCreateKW: PropTypes.func
     }; 
 
     state = {
@@ -19,11 +19,11 @@ class KWGenerate extends React.Component{
         this.setState({[`${evt.target.name}`]: evt.target.value});
     };
 
-    handleSubmit = (evt) => {
+    handleCreateKW = (evt) => {
         evt.preventDefault();
         const {keyword, category_id} = this.state;
         this.setState({keyword: '', category_id: '-1'});
-        this.props.handleSubmit(keyword, category_id);
+        this.props.handleCreateKW(keyword, category_id);
     };
 
     validate = () => {
@@ -47,7 +47,7 @@ class KWGenerate extends React.Component{
                     <option value='-1'>Category</option>
                     {categories.map(c => <option value={c.id} key={c.id}>{c.category}</option>)}
                 </select>
-                <button type='submit' disabled={!this.validate()} onClick={this.handleSubmit}>Create</button>
+                <button type='submit' disabled={!this.validate()} onClick={this.handleCreateKW}>Create</button>
             </div>
         );
     }
