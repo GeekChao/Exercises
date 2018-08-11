@@ -1,7 +1,8 @@
 import React from 'react';
-import parallel from 'async/parallel';
+import async from 'async';
 import axios from 'axios';
 import KWGenerate from './component/KWGenerate';
+import KWList from './component/KWList';
 
 class App extends React.Component{
     state = {
@@ -12,13 +13,13 @@ class App extends React.Component{
     };
 
     componentDidMount(){
-        parallel({
-            keywords: (cb) => {
-                axios.get('/api/keywords')
+        async.parallel({
+            keywords: cb => {
+                axios.get('/api/keywordAndCategory')
                     .then(res => cb(null, res.data))
                     .catch(err => cb(err));
             },
-            categories: (cb) => {
+            categories: cb => {
                 axios.get('/api/categories')
                 .then(res => cb(null, res.data))               
                 .catch(err => cb(err));
@@ -34,8 +35,67 @@ class App extends React.Component{
         this.setState({isFetching: true});
     }
 
-    handleSubmit = (keyword, category_id) => {
+    handleCreateKW = (keyword, category_id) => {
+        async.series([
+            cb => axios.post('/api/createKW', {
+                keyword,
+                category_id
+            }).then(res => cb(null, res.data))
+              .catch(err => cb(err)),
+            cb => {
+                axios.get('/api/keywordAndCategory')
+                    .then(res => cb(null, res.data))
+                    .catch(err => cb(err));
+            }
+        ], (err, results) => {
+            if(err){
+                this.setState({errorMsg: err.message});
+            }
 
+            this.setState({...this.state, keywords: results[1].slice(), errorMsg: ''});
+        });
+    };
+
+    handleUpdateKW = (keyword_id, keyword) => {
+        async.series([
+            cb => axios.put('/api/updateKW', {
+                keyword
+            }, {
+                params: {keyword_id}
+            }).then(res => cb(null, res.data))
+              .catch(err => cb(err)),
+            cb => {
+                axios.get('/api/keywordAndCategory')
+                    .then(res => cb(null, res.data))
+                    .catch(err => cb(err));
+            }
+        ], (err, results) => {
+            if(err){
+                this.setState({errorMsg: err.message});
+            }
+
+            this.setState({...this.state, keywords: results[1].slice(), errorMsg: ''});
+        });
+    };
+
+    handleDeleteKW = (keyword_id) => {
+        async.series([
+            cb => axios.delete('/api/deleteKW', {
+                params: {keyword_id}
+            }).then(res => cb(null, res.data))
+              .catch(err => cb(err)),
+            cb => {
+                axios.get('/api/keywordAndCategory')
+                    .then(res => cb(null, res.data))
+                    .catch(err => cb(err));
+            }
+        ], (err, results) => {
+            if(err){
+                this.setState({errorMsg: err.message});
+            }
+
+            this.setState({...this.state, keywords: results[1].slice(), errorMsg: ''});
+        });
     };
 
     render(){
@@ -43,12 +103,17 @@ class App extends React.Component{
 
         if(isFetching) return <div>Loading....</div>;
         if(errorMsg) return <div>{this.state.errorMsg}</div>;
-        
+                
         return (
             <div>
                 <KWGenerate 
                     categories={categories}
-                    handleSubmit={this.handleSubmit}
+                    handleCreateKW={this.handleCreateKW}
+                />
+                <KWList 
+                    keywords={keywords}
+                    handleDeleteKW={this.handleDeleteKW}
+                    handleUpdateKW={this.handleUpdateKW}
                 />
             </div>
         );
