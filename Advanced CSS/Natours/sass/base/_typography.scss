@@ -1,0 +1,58 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: $color-gray-dark;
+}
+
+%header-primary-box {
+    display: block;
+    text-transform: uppercase;
+    color: $color-white;
+    backface-visibility: hidden;
+}
+
+.header-primary {
+    margin-bottom: 3rem;
+
+    &--main {
+        @extend %header-primary-box;
+        font-size: 4rem;
+        letter-spacing: 2rem;
+        animation: moveInLeft 2s ease-out;
+    }
+    
+    &--sub {
+        @extend %header-primary-box;
+        font-size: $default-font-size;
+        letter-spacing: 1rem;
+        animation: moveInRight 2s ease-out;
+    }
+}
+
+.header-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .2rem;
+    background: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all .2s ease-in;
+
+    &:hover {
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: .5rem 1rem 1.5rem rgba($color-black, .2);
+    }
+}
+
+.header-tertiary {
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size: $default-font-size;
+}

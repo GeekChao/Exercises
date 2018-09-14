@@ -1,0 +1,29 @@
+.row {
+    max-width: $grid-width;
+    margin: 0 auto;
+
+    &:not(:last-child) {
+        margin-bottom: $grid-gutter-verticial;
+    }
+
+    &--duet > * {
+        width: 50%;
+    }
+
+    &--trio > * {
+        width: 33.3%;
+    }
+
+    &--quartet > * {
+
+        width: 25%;
+    }
+
+    @include clearfix;
+
+}
+
+.col {
+    float: left;
+    padding: 0 $grid-gutter-horizontal;
+}
