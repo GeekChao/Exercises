@@ -28,7 +28,7 @@ function getKeywords(){
 
 function getKeywordsAndCategories(){
     return new Promise((resolve, reject) => {
-        db.connect().all('SELECT keyword, category, Keywords.id FROM Keywords JOIN Category ON Keywords.category_id = Category.id', (err, rows) => {
+        db.connect().all('SELECT keyword, category, Keywords.id AS k_id FROM Keywords JOIN Category ON Keywords.category_id = Category.id', (err, rows) => {
             if(err){
                 reject(err);
             }
