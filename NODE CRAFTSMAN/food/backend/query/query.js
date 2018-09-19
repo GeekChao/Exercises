@@ -63,9 +63,9 @@ function updateKeyword(keyword, keyword_id){
 
             resolve('Update successfully');
         });
-
-        db.close();
     });
+
+    db.close();
 }
 
 function deleteKeyWord(keyword_id){
@@ -77,9 +77,9 @@ function deleteKeyWord(keyword_id){
 
             resolve('Delete successfully');
         });
-
-        db.close();
     });
+
+    db.close();
 }
 
 module.exports = {
