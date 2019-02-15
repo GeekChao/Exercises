@@ -4,7 +4,7 @@ interface IHomer {
 
 class Homer implements IHomer {
   public name() {
-        return "Homer Simpson"
+   return "Homer Simpson"
   }
 }
 
