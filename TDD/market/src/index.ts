@@ -1,11 +1,11 @@
 interface IHomer {
-  name(): string;
+  name(): string
 }
 
 class Homer implements IHomer {
   public name() {
-    return "Homer Simpson";
+    return "Homer Simpson"
   }
 }
 
-export default new Homer();
+export default new Homer()

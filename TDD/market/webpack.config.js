@@ -1,5 +1,5 @@
-const path = require("path");
-const WebpackShellPlugin = require("webpack-shell-plugin");
+const path = require("path")
+const WebpackShellPlugin = require("webpack-shell-plugin")
 
 module.exports = {
   mode: "development",
@@ -28,4 +28,4 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
   plugins: [new WebpackShellPlugin({ onBuildEnd: ["nodemon dist/bundle.js"] })]
-};
+}
