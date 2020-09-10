@@ -1,0 +1,21 @@
+{
+  "name": "CS",
+  "version": "1.0.0",
+  "description": "CS Exericse from FrontendMaster",
+  "main": "index.js",
+  "author": "<kevinzou19@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest test --watch"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.11.5"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.13",
+    "jest": "^26.4.2",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}
