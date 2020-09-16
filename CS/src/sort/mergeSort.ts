@@ -21,7 +21,7 @@ const mergeSort = <T>(arr: T[], start: number, end: number): T[] => {
     }
   }
 
-  return mergedSubArr.concat(leftSubArr, rightSubArr);
+  return [...mergedSubArr, ...leftSubArr, ...rightSubArr];
 };
 
 export default mergeSort;
