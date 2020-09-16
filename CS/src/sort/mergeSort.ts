@@ -12,25 +12,16 @@ const mergeSort = <T>(arr: T[], start: number, end: number): T[] => {
 
   // merge
   const mergedSubArr = [];
-  let leftSubArrIndex = 0;
-  let rightSubArrIndex = 0;
 
-  while (
-    leftSubArrIndex < leftSubArr.length &&
-    rightSubArrIndex < rightSubArr.length
-  ) {
-    if (leftSubArr[leftSubArrIndex] < rightSubArr[rightSubArrIndex]) {
-      mergedSubArr.push(leftSubArr[leftSubArrIndex]);
-      leftSubArrIndex++;
+  while (leftSubArr.length && rightSubArr.length) {
+    if (leftSubArr[0] < rightSubArr[0]) {
+      mergedSubArr.push(leftSubArr.shift());
     } else {
-      mergedSubArr.push(rightSubArr[rightSubArrIndex]);
-      rightSubArrIndex++;
+      mergedSubArr.push(rightSubArr.shift());
     }
   }
 
-  return leftSubArrIndex >= leftSubArr.length
-    ? mergedSubArr.concat(rightSubArr.slice(rightSubArrIndex))
-    : mergedSubArr.concat(leftSubArr.slice(leftSubArrIndex));
+  return mergedSubArr.concat(leftSubArr, rightSubArr);
 };
 
 export default mergeSort;
