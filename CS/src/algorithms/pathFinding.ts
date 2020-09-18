@@ -64,39 +64,53 @@ const generatePath = (meetPoint, pathA, pathB) => {
 
 const searchPath = (maze, queueA, queueB, pathA, pathB) => {
   while (queueA.length && queueB.length) {
-    // point A
-    const pointA = queueA.shift();
+    // Start from point A
+    const neighborsA = queueA.reduce((accu, point) => {
+      const neighbors = getNeighbors(maze, pathA, point);
 
-    if (checkIfVisited(pointA, pathB))
-      return generatePath(pointA, pathA, pathB);
-
-    const neighborsA = getNeighbors(maze, pathA, pointA);
-
-    neighborsA.forEach((neighbor) => {
-      queueA.push(neighbor);
-
-      pathA.set(generateKeyFromPoint(neighbor), {
-        point: neighbor,
-        prePoint: pointA
+      neighbors.forEach((neighbor) => {
+        pathA.set(generateKeyFromPoint(neighbor), {
+          point: neighbor,
+          prePoint: point
+        });
       });
-    });
 
-    // point B
-    const pointB = queueB.shift();
+      return accu.concat(neighbors);
+    }, []);
 
-    if (checkIfVisited(pointB, pathA))
-      return generatePath(pointB, pathA, pathB);
+    queueA = [];
 
-    const neighborsB = getNeighbors(maze, pathB, pointB);
+    for (let neighbor of neighborsA) {
+      if (checkIfVisited(neighbor, pathB)) {
+        return generatePath(neighbor, pathA, pathB);
+      } else {
+        queueA.push(neighbor);
+      }
+    }
 
-    neighborsB.forEach((neighbor) => {
-      queueB.push(neighbor);
+    // Start from point B
+    const neighborsB = queueB.reduce((accu, point) => {
+      const neighbors = getNeighbors(maze, pathB, point);
 
-      pathB.set(generateKeyFromPoint(neighbor), {
-        point: neighbor,
-        prePoint: pointB
+      neighbors.forEach((neighbor) => {
+        pathB.set(generateKeyFromPoint(neighbor), {
+          point: neighbor,
+          prePoint: point
+        });
       });
-    });
+
+      return accu.concat(neighbors);
+    }, []);
+
+    queueB = [];
+
+    for (let neighbor of neighborsB) {
+      if (checkIfVisited(neighbor, pathA)) {
+        return generatePath(neighbor, pathA, pathB);
+      } else {
+        queueB.push(neighbor);
+      }
+    }
   }
 
   return [];
