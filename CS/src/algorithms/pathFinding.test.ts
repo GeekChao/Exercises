@@ -43,17 +43,6 @@ describe("pathfinding – happy path", function () {
 // nonetheless, if you're having, solve some of the edge cases too!
 // just remove the x from xdescribe
 describe("pathfinding – edge cases", function () {
-  const byEachOther = [
-    [0, 0, 0, 0, 0],
-    [0, 2, 2, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0]
-  ];
-  it("should solve the maze if they're next to each other", () => {
-    expect(findShortestPathLength(byEachOther, [1, 1], [2, 1])).toEqual(1);
-  });
-
   const impossible = [
     [0, 0, 0, 0, 0],
     [0, 2, 0, 0, 0],
