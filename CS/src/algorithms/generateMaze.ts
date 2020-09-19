@@ -44,7 +44,6 @@ const moveToPoint = (maze, direction, currentPoint, nextPoint) => {
   nextPointInfo[oppositeDirection] = false;
 
   // mark it visited
-  currentPointInfo.visited = true;
   nextPointInfo.visited = true;
 
   return maze;
@@ -69,6 +68,9 @@ const moveToPoint = (maze, direction, currentPoint, nextPoint) => {
 const generateMaze = (maze, [xStart, yStart]) => {
   // code goes here
   const directions = randomizeDirection();
+  const currentPointInfo = getPointInfoFromMaze(maze, [xStart, yStart]);
+
+  currentPointInfo.visited = true;
 
   directions.forEach((direction) => {
     const nextPoint = getNextPoint(direction, [xStart, yStart]);
