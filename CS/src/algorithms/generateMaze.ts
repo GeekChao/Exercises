@@ -1,5 +1,5 @@
 const randomizeDirection = ((dict) => () =>
-  dict[Math.floor(Math.random() * dict.length)])(["n", "e", "s", "w"]);
+  dict.sort(() => Math.random() - 0.5))(["n", "e", "s", "w"]);
 
 const canMoveTo = (maze, [x, y]) => {
   // out of boundary
@@ -49,6 +49,22 @@ const moveToPoint = (maze, direction, currentPoint, nextPoint) => {
 
   return maze;
 };
+
+// create a function that accepts two paraments: an empty maze and a starting coordinate
+// the maze will be an array of arrays of objects. the objects will look like:
+// {
+//   "n": true,
+//   "e": true,
+//   "s": true,
+//   "w": true,
+//   "visited": false
+// }
+//
+// the outer array (that contains arrays) represents the y axis. the inner arrays (that contains
+// objects) are represent the x axis. maze[y][x]
+//
+// the starting coordinates will be a pair, an array of two numbers, [x, y]. the first
+// number will be the x position and the second will be the y position
 
 const generateMaze = (maze, [xStart, yStart]) => {
   // code goes here
