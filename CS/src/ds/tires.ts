@@ -2,22 +2,28 @@ class Node {
   constructor(letter) {
     this.letter = letter;
     this.children = {};
+    this.terminus = false;
   }
 
   get letters() {
     return Object.keys(this.children);
   }
 
-  _getSuggestions(node, str, suggestions = []) {
-    if (!node.letters.length) {
+  _getSuggestions(str, suggestions = []) {
+    if (!this.letters.length) {
       suggestions.push(str);
+
       return suggestions;
+    }
+
+    if (this.terminus) {
+      suggestions.push(str);
     }
 
     if (suggestions.length >= 3) return suggestions;
 
-    for (let [letter, child] of Object.entries(node.children)) {
-      this._getSuggestions(child, str + letter, suggestions);
+    for (let [letter, child] of Object.entries(this.children)) {
+      child._getSuggestions(str + letter, suggestions);
     }
 
     return suggestions;
@@ -39,11 +45,15 @@ class Node {
       prefix = prefix.slice(1);
     }
 
-    return this._getSuggestions(currentNode, str);
+    return currentNode._getSuggestions(str);
   }
 
   add(word) {
-    if (!word.length) return;
+    if (!word.length) {
+      this.terminus = true;
+
+      return;
+    }
 
     const letter = word[0];
 
