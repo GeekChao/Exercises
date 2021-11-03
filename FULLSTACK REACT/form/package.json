@@ -27,6 +27,6 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "validator": "^10.4.0"
+    "validator": "^13.7.0"
   }
 }
